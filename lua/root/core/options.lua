@@ -3,6 +3,7 @@ vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+vim.opt.autochdir = true
 vim.opt.expandtab = false
 
 vim.opt.smartindent = true
@@ -15,6 +16,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -32,4 +34,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
+})
+
+-- Automatically change directory to the current file's directory
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    command = "silent! lcd %:p:h"
 })

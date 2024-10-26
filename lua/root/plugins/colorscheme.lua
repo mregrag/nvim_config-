@@ -1,52 +1,35 @@
 return {
-	{
-		"navarasu/onedark.nvim",
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			-- Default options:
-			-- Lua
-			require('onedark').setup  {
-				-- Main options --
-				style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-				transparent = true,  -- Show/hide background
-				term_colors = true, -- Change terminal color as per the selected theme style
-				ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-				cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+    {
+        'rktjmp/lush.nvim',
+        -- You can set the priority here if needed
+    },
+    {
+        'uloco/bluloco.nvim',
+        priority = 1000, -- Ensure this loads before other plugins
+        config = function()
+            -- Configure the Bluloco theme
+            require('bluloco').setup {
+                style = 'dark', -- Choose between 'dark' or 'light'
+                transparent = true, -- Set to true for a transparent background
+                transparent_background = true, -- Enable transparent background
+                styles = {
+                    comments = 'italic', -- Set comments style
+                    keywords = 'bold',    -- Set keywords style
+                    functions = 'none',   -- No special style for functions
+                    strings = 'none',     -- No special style for strings
+                    variables = 'none',    -- No special style for variables
+                },
+                -- Additional custom options can go here
+                diagnostics = {
+                    darker = true, -- Darker colors for diagnostics
+                    undercurl = true, -- Use undercurl instead of underline for diagnostics
+                    background = true, -- Use background color for virtual text
+                },
+            }
 
-				-- toggle theme style ---
-				toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-				toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
-
-				-- Change code style ---
-				-- Options are italic, bold, underline, none
-				-- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
-				code_style = {
-					comments = 'italic',
-					keywords = 'none',
-					functions = 'none',
-					strings = 'none',
-					variables = 'none'
-				},
-
-				-- Lualine options --
-				lualine = {
-					transparent = false, -- lualine center bar transparency
-				},
-
-				-- Custom Highlights --
-				colors = {}, -- Override default colors
-				highlights = {}, -- Override highlight groups
-
-				-- Plugins Config --
-				diagnostics = {
-					darker = true, -- darker colors for diagnostic
-					undercurl = true,   -- use undercurl instead of underline for diagnostics
-					background = true,    -- use background color for virtual text
-				},
-			}
-			-- setup must be called before loading
-			vim.cmd.colorscheme "onedark"
-
-		end,
-	},
+            -- Set the colorscheme
+            vim.cmd('colorscheme bluloco')
+            -- vim.o.background = 'dark' -- Set the background to dark
+        end,
+    },
 }

@@ -26,10 +26,8 @@ return {
 
     mason_lspconfig.setup({
       -- list of servers for mason to install
-      ensure_installed = {
-        "clangd",
-	 "lua_ls",
-      },
+      ensure_installed = {"clangd", "lua_ls", "tsserver"},
+      automatic_installation = true,
     })
   end,
 }
