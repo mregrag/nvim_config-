@@ -122,43 +122,5 @@ return {
 			"--header-insertion=iwyu",
 		},
 	})
-	-- Add "tsserver" to ensure_installed list
-	mason_lspconfig.setup({
-		ensure_installed = {"clangd", "lua_ls", "tsserver"},
-		automatic_installation = true,
-	})
-
-	-- After your other lspconfig setups, add:
-	-- configure tsserver for JavaScript/TypeScript
-	lspconfig["tsserver"].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-		settings = {
-			typescript = {
-				inlayHints = {
-					includeInlayParameterNameHints = "all",
-					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayVariableTypeHints = true,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayEnumMemberValueHints = true,
-				},
-			},
-			javascript = {
-				inlayHints = {
-					includeInlayParameterNameHints = "all",
-					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayVariableTypeHints = true,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayEnumMemberValueHints = true,
-				},
-			},
-		},
-		filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-		cmd = { "typescript-language-server", "--stdio" },
-	})
 end,
 }
