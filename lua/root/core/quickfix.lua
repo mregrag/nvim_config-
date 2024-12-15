@@ -10,10 +10,10 @@ vim.keymap.set('n', '<leader>qa', function()
     local qf_list = vim.fn.getqflist()
     -- Create entry for current file
     local new_entry = {
-        filename = current_file,
-        lnum = vim.fn.line('.'),
-        col = vim.fn.col('.'),
-        text = vim.fn.getline('.')
+	filename = current_file,
+	lnum = vim.fn.line('.'),
+	col = vim.fn.col('.'),
+	text = vim.fn.getline('.')
     }
     -- Add to existing quickfix list
     table.insert(qf_list, new_entry)
