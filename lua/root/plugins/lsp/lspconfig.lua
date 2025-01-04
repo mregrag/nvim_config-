@@ -7,7 +7,6 @@ return {
 	{ "folke/neodev.nvim", opts = {} },
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
-	"prettier/vim-prettier",
     },
     config = function()
 	-- import lspconfig plugin

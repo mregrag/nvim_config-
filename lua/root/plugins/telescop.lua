@@ -14,6 +14,7 @@ return {
 	vim.keymap.set("n", "<leader>fg", builtin.live_grep)
 	vim.keymap.set("n", "<leader>fs", builtin.grep_string)
 	vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-	vim.keymap.set("n", "<leader>nn", function () builtin.find_files{cwd = vim.fn.stdpath("config")} end)
+	vim.keymap.set("n", "<leader>nv", function () builtin.find_files{cwd = vim.fn.stdpath("config")} end)
+	vim.keymap.set("n", "<leader>fh", function () builtin.find_files{cwd = vim.fn.expand("~/"), hidden = true} end)
     end,
 }
